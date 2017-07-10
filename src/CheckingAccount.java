@@ -1,19 +1,21 @@
 /**
  * Created by emma on 7/10/17.
  */
-public class SavingsAccount extends Account {
+public class CheckingAccount extends Account {
 
     String accountNumber;
     double balance;
     double annualInterest;
     Date dateCreated;
+    private double overdraftLimit;
 
-    public SavingsAccount(String newAccountNumber, double newBalance, double newAnnualInterest, Date newDateCreated) {
+    public CheckingAccount(String newAccountNumber, double newBalance, double newAnnualInterest, Date newDateCreated, double newOverdraftLimit) {
 
         setAccountNumber(newAccountNumber);
         setBalance(newBalance);
         setAnnualInterest(newAnnualInterest);
         setDateCreated(newDateCreated);
+        setOverdraftLimit(newOverdraftLimit);
 
     }
 
@@ -22,7 +24,12 @@ public class SavingsAccount extends Account {
     }
 
     public void withdraw(double amount) {
-        setBalance(getBalance() - amount);
+
+        if(amount <= overdraftLimit)
+            setBalance(getBalance() - amount);
+        else
+            System.out.println("Exceeds overdraw limit!");
+
     }
 
     public String getAccountNumber() {
@@ -57,4 +64,11 @@ public class SavingsAccount extends Account {
         this.dateCreated = dateCreated;
     }
 
+    public double getOverdraftLimit() {
+        return overdraftLimit;
+    }
+
+    public void setOverdraftLimit(double overdraftLimit) {
+        this.overdraftLimit = overdraftLimit;
+    }
 }
