@@ -8,4 +8,7 @@ public abstract class Account {
     double annualInterest;
     Date dateCreated;
 
+    public abstract void deposit(double amount);
+    public abstract void withdraw(double amount);
+
 }
