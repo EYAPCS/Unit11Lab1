@@ -1,12 +1,13 @@
 /**
  * Created by emma on 7/10/17.
  */
-public class SavingsAccount extends Account {
 
-    String accountNumber;
-    double balance;
-    double annualInterest;
-    Date dateCreated;
+/**
+ * The SavingsAccount class cannot be withdrawn below 0.
+ * @author Emma Yang
+ */
+
+public class SavingsAccount extends Account {
 
     public SavingsAccount(String newAccountNumber, double newBalance, double newAnnualInterest, Date newDateCreated) {
 
@@ -22,39 +23,11 @@ public class SavingsAccount extends Account {
     }
 
     public void withdraw(double amount) {
-        setBalance(getBalance() - amount);
-    }
-
-    public String getAccountNumber() {
-        return accountNumber;
-    }
-
-    public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
-    }
-
-    public double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
-
-    public double getAnnualInterest() {
-        return annualInterest;
-    }
-
-    public void setAnnualInterest(double annualInterest) {
-        this.annualInterest = annualInterest;
-    }
-
-    public Date getDateCreated() {
-        return dateCreated;
-    }
-
-    public void setDateCreated(Date dateCreated) {
-        this.dateCreated = dateCreated;
+        if(getBalance() - amount < 0) {
+            System.out.println("Cannot be overdrawn!");
+        } else {
+            setBalance(getBalance() - amount);
+        }
     }
 
 }

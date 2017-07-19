@@ -1,12 +1,14 @@
 /**
  * Created by emma on 7/10/17.
  */
+
+/**
+ * CheckingAccount class has an overdraft limit.
+ * @author Emma Yang
+ */
+
 public class CheckingAccount extends Account {
 
-    String accountNumber;
-    double balance;
-    double annualInterest;
-    Date dateCreated;
     private double overdraftLimit;
 
     public CheckingAccount(String newAccountNumber, double newBalance, double newAnnualInterest, Date newDateCreated, double newOverdraftLimit) {
@@ -25,43 +27,11 @@ public class CheckingAccount extends Account {
 
     public void withdraw(double amount) {
 
-        if(amount <= overdraftLimit)
-            setBalance(getBalance() - amount);
+        if(getBalance() - amount < (overdraftLimit * -1))
+            System.out.println("Goes below overdraft limit of $" + getOverdraftLimit());
         else
-            System.out.println("Exceeds overdraw limit!");
+            setBalance(getBalance() - amount);
 
-    }
-
-    public String getAccountNumber() {
-        return accountNumber;
-    }
-
-    public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
-    }
-
-    public double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
-
-    public double getAnnualInterest() {
-        return annualInterest;
-    }
-
-    public void setAnnualInterest(double annualInterest) {
-        this.annualInterest = annualInterest;
-    }
-
-    public Date getDateCreated() {
-        return dateCreated;
-    }
-
-    public void setDateCreated(Date dateCreated) {
-        this.dateCreated = dateCreated;
     }
 
     public double getOverdraftLimit() {
